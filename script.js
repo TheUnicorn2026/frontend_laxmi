@@ -104,17 +104,18 @@ app.controller('AuthController', ['$scope', '$timeout', '$interval', function($s
         .then(data => {
             $scope.$apply(function() {
                 $scope.loading = false;
-                
-                if (data.reset_token) {
+                console.log(data)
+                if (data.access) {
                     localStorage.setItem('access', data.access);
                     localStorage.setItem('refresh', data.refresh);
                     localStorage.setItem('customer', JSON.stringify(data.customer));
                     
-                    showAlert('Login successful! Redirecting...', 'success');
+                    
                     
                     $timeout(function() {
-                        window.location.href = 'dashboard/dashboard.html';
-                    }, 1500);
+                        showAlert('Login successful! Redirecting...', 'success');
+                        window.location.href = 'http://127.0.0.1:5500/new/dashboard/dashboard.html';
+                    }, 100);
                 } else {
                     showAlert(data.message || 'Login failed. Please try again.', 'error');
                 }

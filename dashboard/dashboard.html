@@ -5,29 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FINEbank.IO - Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="dashboard.js">
     <style>
 
     </style>
 </head>
-<body>
-    
+<body ng-controller="MainController" ng-app="bugetifyApp">
 
-        <!-- Main Content -->
+    <!-- Main Content -->
         <div class="main-content">
             <div class="header">
                 <div class="greeting">
                     <h1>Hello Tanzir</h1>
-                    <span class="date-badge"><i class="far fa-calendar"></i> May 19, 2023</span>
                 </div>
                 <div class="header-actions">
-                    <div class="search-box">
-                        <input type="text" placeholder="Search here">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="notification-icon">
-                        <i class="fas fa-bell"></i>
+                    <div class="nav-links">
+                        <a href="#insight">Insight</a>
+                        <a href="#suggestions">Suggestions</a>
+                        <a href="#about_us">About Us</a>    
+                        <!-- Profile Link (With Icon and Name) -->
+                        <a href="#profile" class="profile-link">
+                            <i class="fas fa-user-circle"></i> Profile
+                        </a> 
+                        <!-- Logout Link -->
+                        <a href="#logout" ng-click="customer_logout()">Logout</a>
                     </div>
                 </div>
             </div>
@@ -155,81 +157,33 @@
                         
                         <div class="transaction-tabs">
                             <div class="tab active">All</div>
-                            <div class="tab">Revenue</div>
+                            <div class="tab">Deposits</div>
                             <div class="tab">Expenses</div>
                         </div>
 
-                        <div class="transaction-item">
-                            <div class="transaction-icon">
-                                <i class="fas fa-car" style="color: #a0aec0;"></i>
-                            </div>
-                            <div class="transaction-info">
-                                <div class="transaction-name">GTR 5</div>
-                                <div class="transaction-category">Gadget & Gear</div>
-                            </div>
-                            <div class="transaction-right">
-                                <div class="transaction-amount">$160.00</div>
-                                <div class="transaction-date">17 May 2023</div>
-                            </div>
-                        </div>
-
-                        <div class="transaction-item">
-                            <div class="transaction-icon">
-                                <i class="fas fa-tshirt" style="color: #a0aec0;"></i>
-                            </div>
-                            <div class="transaction-info">
-                                <div class="transaction-name">Polo Shirt</div>
-                                <div class="transaction-category">XL Fashions</div>
-                            </div>
-                            <div class="transaction-right">
-                                <div class="transaction-amount">$20.00</div>
-                                <div class="transaction-date">18 May 2023</div>
-                            </div>
-                        </div>
-
-                        <div class="transaction-item">
-                            <div class="transaction-icon">
-                                <i class="fas fa-home" style="color: #a0aec0;"></i>
-                            </div>
-                            <div class="transaction-info">
-                                <div class="transaction-name">Biriyani</div>
-                                <div class="transaction-category">Kacchi Biriyani</div>
-                            </div>
-                            <div class="transaction-right">
-                                <div class="transaction-amount">$10.00</div>
-                                <div class="transaction-date">17 May 2023</div>
-                            </div>
-                        </div>
-
-                        <div class="transaction-item">
-                            <div class="transaction-icon">
-                                <i class="fas fa-taxi" style="color: #a0aec0;"></i>
-                            </div>
-                            <div class="transaction-info">
-                                <div class="transaction-name">Taxi Fare</div>
-                                <div class="transaction-category">Uber</div>
-                            </div>
-                            <div class="transaction-right">
-                                <div class="transaction-amount">$12.00</div>
-                                <div class="transaction-date">17 May 2023</div>
-                            </div>
-                        </div>
-
-                        <div class="transaction-item">
-                            <div class="transaction-icon">
-                                <i class="fas fa-keyboard" style="color: #a0aec0;"></i>
-                            </div>
-                            <div class="transaction-info">
-                                <div class="transaction-name">Keyboard</div>
-                                <div class="transaction-category">Gadget & Gear</div>
-                            </div>
-                            <div class="transaction-right">
-                                <div class="transaction-amount">$22.00</div>
-                                <div class="transaction-date">17 May 2023</div>
-                            </div>
-                        </div>
-                    </div>
-
+                       <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="transaction in transactions">
+                            <td>{{transaction.id}}</td>
+                            <td>{{transaction.description}}</td>
+                            <td>{{transaction.type}}</td>
+                            <td ng-class="transaction.type === 'Credit' ? 'amount-credit' : 'amount-debit'">
+                                {{transaction.type === 'Credit' ? '+' : '-'}}₹{{transaction.amount | number:2}}
+                            </td>
+                            <td>{{transaction.time}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                       
                     <!-- Statistics -->
                     <div class="card">
                         <div class="chart-header">
@@ -419,6 +373,9 @@
                 </div>
             </div>
         </div>
-   
+<script src="dashboard.js">
+
+</script>
 </body>
+
 </html>

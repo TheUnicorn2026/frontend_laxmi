@@ -14,8 +14,6 @@
             padding: 20px;
         }
 
-
-
         .sidebar {
             width: 280px;
             background: #1a202c;
@@ -23,15 +21,6 @@
             display: flex;
             flex-direction: column;
         }
-
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
-            padding: 0 30px 40px;
-            letter-spacing: -0.5px;
-        }
-
         .nav-item {
             padding: 15px 30px;
             color: #a0aec0;
@@ -58,58 +47,85 @@
             width: 20px;
         }
 
-        .user-profile {
-            margin-top: auto;
-            padding: 20px 30px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        /* Styling for nav-links */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
 
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
+/* Profile Link Styling */
+.nav-links .profile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-        .user-info {
-            flex: 1;
-        }
+/* Profile Icon Styling */
+.nav-links .profile-link i {
+    font-size: 20px;
+}
 
-        .user-name {
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
-        }
+/* Hover Effect for Profile Link */
+.nav-links .profile-link:hover {
+    background-color: #2dd4bf;
+    color: #fff;
+}
 
-        .user-label {
-            color: #a0aec0;
-            font-size: 12px;
-        }
+/* Styling for the Logout Link */
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-        .logout-btn {
-            padding: 12px 30px;
-            color: #a0aec0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-        }
+/* Hover Effect for All Links */
+.nav-links a:hover {
+    background-color: #2dd4bf;
+    color: #fff;
+}
 
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #ef4444;
-        }
+
+        .header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+}
+
+/* Navigation Links */
+.header-actions .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.header-actions .nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effect for Links */
+.header-actions .nav-links a:hover {
+    background-color: #2dd4bf;
+    color: #fff;
+}
 
         .main-content {
             flex: 1;
@@ -488,54 +504,7 @@
             border-bottom-color: #2dd4bf;
         }
 
-        .transaction-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid #f7fafc;
-        }
-
-        .transaction-icon {
-            width: 45px;
-            height: 45px;
-            background: #f7fafc;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        .transaction-info {
-            flex: 1;
-        }
-
-        .transaction-name {
-            font-weight: 600;
-            color: #1a202c;
-            margin-bottom: 3px;
-        }
-
-        .transaction-category {
-            font-size: 12px;
-            color: #a0aec0;
-        }
-
-        .transaction-right {
-            text-align: right;
-        }
-
-        .transaction-amount {
-            font-weight: 700;
-            color: #1a202c;
-            margin-bottom: 3px;
-        }
-
-        .transaction-date {
-            font-size: 12px;
-            color: #a0aec0;
-        }
+       
 
         .chart-header {
             display: flex;
@@ -720,4 +689,86 @@
             .search-box input {
                 width: 200px;
             }
+        }
+
+        /* Transaction Table */
+        .table-container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 4px 24px rgba(100, 116, 139, 0.08);
+        }
+
+        .table-header {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        thead th {
+            text-align: left;
+            padding: 12px 16px;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        tbody tr {
+            /* background: rgba(248, 250, 252, 0.8); */
+            background: rgba(225, 236, 247, 0.8);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 14px;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        tbody tr:hover {
+            /* background: rgba(241, 245, 249, 0.9); */
+            background: rgba(203, 223, 241, 0.8);
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.08);
+            border-color: rgba(147, 197, 253, 0.5);
+        }
+
+        tbody td {
+            padding: 16px;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        tbody td:first-child {
+            border-radius: 14px 0 0 14px;
+            color: #64748b;
+        }
+
+        tbody td:last-child {
+            border-radius: 0 14px 14px 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .amount-credit {
+            color: #10b981;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .amount-debit {
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 15px;
         }
