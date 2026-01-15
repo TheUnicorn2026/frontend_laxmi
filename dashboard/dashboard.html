@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="bugetifyApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINEbank.IO - Dashboard</title>
+    <title>Budgetify-Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <link rel="stylesheet" href="dashboard.css">
@@ -11,13 +11,13 @@
 
     </style>
 </head>
-<body ng-controller="MainController" ng-app="bugetifyApp">
+<body ng-controller="MainController">
 
     <!-- Main Content -->
         <div class="main-content">
             <div class="header">
                 <div class="greeting">
-                    <h1>Hello Tanzir</h1>
+                    <h2>Hello, {{ customer.name }} </h2>
                 </div>
                 <div class="header-actions">
                     <div class="nav-links">
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="content">
+            <div class="content" ng-controller="TransactionController">
                 <!-- Top Section -->
                 <div class="top-section">
                     <!-- Total Balance -->
@@ -42,7 +42,7 @@
                         <div class="card-header">
                             <span class="card-title">Total Balance</span>
                         </div>
-                        <div class="balance-amount">$240,399</div>
+                        <div class="balance-amount"> ₹{{stats.total_balance}} </div>
                         <div class="balance-label">All Accounts</div>
                         
                         <div class="credit-card">
@@ -50,7 +50,7 @@
                             <div class="card-name">Credit Card</div>
                             <div class="card-number">**** **** **** 2998</div>
                             <div class="card-bottom">
-                                <div class="card-balance">$25000</div>
+                                <div class="card-balance">₹25000</div>
                                 <div class="card-logo">
                                     <div class="circle red"></div>
                                     <div class="circle orange"></div>
@@ -69,13 +69,15 @@
                         </div>
                     </div>
 
+
+
                     <!-- Goals -->
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-header">
                             <span class="card-title">Goals</span>
                             <span style="color: #a0aec0; font-size: 13px;">May, 2023</span>
                         </div>
-                        <div class="goal-amount">$20,000 <i class="fas fa-edit" style="font-size: 16px; color: #a0aec0; cursor: pointer;"></i></div>
+                        <div class="goal-amount">₹20,000 <i class="fas fa-edit" style="font-size: 16px; color: #a0aec0; cursor: pointer;"></i></div>
                         
                         <div class="progress-ring">
                             <svg width="120" height="120">
@@ -103,7 +105,63 @@
                                 <div class="goal-metric-label">This month Target</div>
                             </div>
                         </div>
+                    </div> -->
+
+                    <!-- Remaining Budget  -->
+                    <!-- Goals -->
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Goals</span>
+                            <span style="color: #a0aec0; font-size: 13px;">May, 2023</span>
+                        </div>
+                        
+                        <!-- Editable Goal Amount -->
+                        <div class="goal-amount">
+                            <span ng-if="!isEditingGoal">{{goalAmount | currency:'₹'}}</span>
+                            <input ng-if="isEditingGoal" type="number" ng-model="goalAmount" min="0" style="width: 120px; padding: 5px; font-size: 16px; border: 1px solid #ddd;">
+                            <i ng-if="!isEditingGoal" class="fas fa-edit" style="font-size: 16px; color: #a0aec0; cursor: pointer;" ng-click="editGoal()"></i>
+                            <i ng-if="isEditingGoal" class="fas fa-check" style="font-size: 16px; color: #a0aec0; cursor: pointer;" ng-click="saveGoal()"></i>
+                        </div>
+                        
+                        <!-- Progress Ring -->
+                        <div class="progress-ring">
+                            <svg width="120" height="120">
+                                <!-- Static Circle (Background Circle) -->
+                                <circle class="progress-ring-circle" cx="60" cy="60" r="45" stroke="#e0e0e0" stroke-width="10" fill="none"></circle>
+                                <!-- Dynamic Circle (Progress Circle) -->
+                                <circle class="progress-ring-progress" cx="60" cy="60" r="45" stroke="#4caf50" stroke-width="10" fill="none"
+                                    style="stroke-dasharray: {{circumference}}; stroke-dashoffset: {{dashOffset}};"></circle>
+                            </svg>
+                            <div class="progress-text">{{totalExpense | currency:'₹'}}</div>
+                        </div>
+                        
+                        <div class="goal-footer">Target vs Achievement</div>
+                        
+                        <!-- Goal Info Section (Updated to show Expense & Remaining Balance) -->
+                        <div class="goal-info">
+                            <!-- Monthly Expense -->
+                            <div class="goal-metric">
+                                <div class="goal-metric-value">
+                                    <i class="fas fa-calendar" style="color: #a0aec0;"></i>
+                                    ₹{{stats.expense}} <!-- Total monthly expenses -->
+                                </div>
+                                <div class="goal-metric-label">Total Monthly Expense</div>
+                            </div>
+                            
+                            <!-- Remaining Balance -->
+                            <div class="goal-metric">
+                                <div class="goal-metric-value">
+                                    <i class="fas fa-money-bill-wave" style="color: #a0aec0;"></i>
+                                    ₹{{remainingBalance | currency:'₹'}} <!-- Remaining balance to goal -->
+                                </div>
+                                <div class="goal-metric-label">Remaining Balance</div>
+                            </div>
+                        </div>
                     </div>
+
+
+
+
 
                     <!-- Upcoming Bill -->
                     <div class="card">
@@ -147,7 +205,7 @@
                 </div>
 
                 <!-- Middle Section -->
-                <div class="middle-section">
+                <div class="middle-section"  ng-controller="TransactionController" >
                     <!-- Recent Transactions -->
                     <div class="card">
                         <div class="card-header">
@@ -172,14 +230,15 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         <tr ng-repeat="transaction in transactions">
-                            <td>{{transaction.id}}</td>
-                            <td>{{transaction.description}}</td>
-                            <td>{{transaction.type}}</td>
-                            <td ng-class="transaction.type === 'Credit' ? 'amount-credit' : 'amount-debit'">
-                                {{transaction.type === 'Credit' ? '+' : '-'}}₹{{transaction.amount | number:2}}
+                            <td>{{transaction.transaction_id}}</td>
+                            <td>{{transaction.description || 'No Description'}}</td> <!-- Make sure you have a description in the response -->
+                            <td>{{transaction.credit_amt > 0 ? 'Deposit' : 'Expense'}}</td>
+                            <td ng-class="transaction.credit_amt > 0 ? 'amount-credit' : 'amount-debit'">
+                                {{transaction.credit_amt > 0 ? '+' : '-'}}₹{{(transaction.credit_amt || transaction.debit_amt) | number:2}}
                             </td>
-                            <td>{{transaction.time}}</td>
+                            <td>{{transaction.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -278,7 +337,7 @@
                                 </div>
                             </div>
                             <div class="expense-category">Housing</div>
-                            <div class="expense-amount">$250.00</div>
+                            <div class="expense-amount">₹250.00</div>
                             <div class="expense-change decrease">
                                 <span>15%</span>
                                 <i class="fas fa-arrow-down"></i>
@@ -295,7 +354,7 @@
                                 </div>
                             </div>
                             <div class="expense-category">Food</div>
-                            <div class="expense-amount">$350.00</div>
+                            <div class="expense-amount">₹350.00</div>
                             <div class="expense-change decrease">
                                 <span>08%</span>
                                 <i class="fas fa-arrow-down"></i>
@@ -312,7 +371,7 @@
                                 </div>
                             </div>
                             <div class="expense-category">Transportation</div>
-                            <div class="expense-amount">$50.00</div>
+                            <div class="expense-amount">₹50.00</div>
                             <div class="expense-change decrease">
                                 <span>12%</span>
                                 <i class="fas fa-arrow-down"></i>
@@ -329,7 +388,7 @@
                                 </div>
                             </div>
                             <div class="expense-category">Entertainment</div>
-                            <div class="expense-amount">$80.00</div>
+                            <div class="expense-amount">₹80.00</div>
                             <div class="expense-change decrease">
                                 <span>15%</span>
                                 <i class="fas fa-arrow-down"></i>
@@ -346,7 +405,7 @@
                                 </div>
                             </div>
                             <div class="expense-category">Shopping</div>
-                            <div class="expense-amount">$420.00</div>
+                            <div class="expense-amount">₹420.00</div>
                             <div class="expense-change increase">
                                 <span>25%</span>
                                 <i class="fas fa-arrow-up"></i>
@@ -363,7 +422,7 @@
                                 </div>
                             </div>
                             <div class="expense-category">Others</div>
-                            <div class="expense-amount">$650.00</div>
+                            <div class="expense-amount">₹650.00</div>
                             <div class="expense-change increase">
                                 <span>23%</span>
                                 <i class="fas fa-arrow-up"></i>

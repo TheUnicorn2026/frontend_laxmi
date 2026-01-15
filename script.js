@@ -1,5 +1,5 @@
 // AngularJS App Configuration
-const app = angular.module('budgetWalaApp', []);
+const app = angular.module('BUdgetifyApp', []);
 
 // Configuration - Update with your backend API URL
 const API_BASE_URL = 'http://127.0.0.1:8000/customer';
@@ -8,6 +8,7 @@ const API_BASE_URL = 'http://127.0.0.1:8000/customer';
 app.controller('AuthController', ['$scope', '$timeout', '$interval', function($scope, $timeout, $interval) {
     
     // Initialize scope variables
+    $scope.customer_id = JSON.parse(localStorage.getItem('customer')).id;
     $scope.currentForm = 'login';
     $scope.loading = false;
     $scope.alert = { show: false, message: '', type: '' };
@@ -108,14 +109,15 @@ app.controller('AuthController', ['$scope', '$timeout', '$interval', function($s
                 if (data.access) {
                     localStorage.setItem('access', data.access);
                     localStorage.setItem('refresh', data.refresh);
-                    localStorage.setItem('customer', JSON.stringify(data.customer));
+                    localStorage.setItem('customer', JSON.stringify(data?.customer));
+
+                    console.log(data?.customer)
                     
                     
-                    
+                    showAlert('Login successful! Redirecting...', 'success');
                     $timeout(function() {
-                        showAlert('Login successful! Redirecting...', 'success');
-                        window.location.href = 'http://127.0.0.1:5500/new/dashboard/dashboard.html';
-                    }, 100);
+                        window.location.href = '/frontend_laxmi/dashboard/dashboard.html';
+                    }, 500);
                 } else {
                     showAlert(data.message || 'Login failed. Please try again.', 'error');
                 }
