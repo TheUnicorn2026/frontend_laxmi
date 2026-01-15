@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINEbank.IO - Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="dashboard.js">
+    <style>
+
+    </style>
+</head>
+<body>
+    
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="greeting">
+                    <h1>Hello Tanzir</h1>
+                    <span class="date-badge"><i class="far fa-calendar"></i> May 19, 2023</span>
+                </div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search here">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- Top Section -->
+                <div class="top-section">
+                    <!-- Total Balance -->
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Total Balance</span>
+                        </div>
+                        <div class="balance-amount">$240,399</div>
+                        <div class="balance-label">All Accounts</div>
+                        
+                        <div class="credit-card">
+                            <div class="card-type">Account Type</div>
+                            <div class="card-name">Credit Card</div>
+                            <div class="card-number">**** **** **** 2998</div>
+                            <div class="card-bottom">
+                                <div class="card-balance">$25000</div>
+                                <div class="card-logo">
+                                    <div class="circle red"></div>
+                                    <div class="circle orange"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-nav">
+                            <span style="color: #2dd4bf; cursor: pointer;">← Previous</span>
+                            <div style="display: flex; gap: 5px; margin: 0 auto;">
+                                <div class="dot active"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <span class="nav-arrow">Next →</span>
+                        </div>
+                    </div>
+
+                    <!-- Goals -->
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Goals</span>
+                            <span style="color: #a0aec0; font-size: 13px;">May, 2023</span>
+                        </div>
+                        <div class="goal-amount">$20,000 <i class="fas fa-edit" style="font-size: 16px; color: #a0aec0; cursor: pointer;"></i></div>
+                        
+                        <div class="progress-ring">
+                            <svg width="120" height="120">
+                                <circle class="progress-ring-circle" cx="60" cy="60" r="45"></circle>
+                                <circle class="progress-ring-progress" cx="60" cy="60" r="45"></circle>
+                            </svg>
+                            <div class="progress-text">12K</div>
+                        </div>
+                        
+                        <div class="goal-footer">Target vs Achievement</div>
+                        
+                        <div class="goal-info">
+                            <div class="goal-metric">
+                                <div class="goal-metric-value">
+                                    <i class="fas fa-bullseye" style="color: #a0aec0;"></i>
+                                    $12,500
+                                </div>
+                                <div class="goal-metric-label">Target Achieved</div>
+                            </div>
+                            <div class="goal-metric">
+                                <div class="goal-metric-value">
+                                    <i class="fas fa-calendar" style="color: #a0aec0;"></i>
+                                    $20,000
+                                </div>
+                                <div class="goal-metric-label">This month Target</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Bill -->
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Upcoming Bill</span>
+                            <span class="view-all">View All <i class="fas fa-chevron-right"></i></span>
+                        </div>
+                        
+                        <div class="bill-item">
+                            <div class="bill-date">
+                                <div class="bill-day">15</div>
+                                <div class="bill-month">May</div>
+                            </div>
+                            <div class="bill-icon">
+                                <i class="fas fa-shopping-bag" style="color: #ef4444;"></i>
+                            </div>
+                            <div class="bill-info">
+                                <div class="bill-company">Figma</div>
+                                <div class="bill-type">Figma - Monthly</div>
+                                <div style="font-size: 11px; color: #a0aec0; margin-top: 2px;">Last Charge - 14 May, 2022</div>
+                            </div>
+                            <div class="bill-amount">$150</div>
+                        </div>
+
+                        <div class="bill-item">
+                            <div class="bill-date">
+                                <div class="bill-day">16</div>
+                                <div class="bill-month">Jun</div>
+                            </div>
+                            <div class="bill-icon">
+                                <i class="fas fa-film" style="color: #ef4444;"></i>
+                            </div>
+                            <div class="bill-info">
+                                <div class="bill-company">Adobe</div>
+                                <div class="bill-type">Adobe - Yearly</div>
+                                <div style="font-size: 11px; color: #a0aec0; margin-top: 2px;">Last Charge - 17 Jun, 2023</div>
+                            </div>
+                            <div class="bill-amount">$559</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Section -->
+                <div class="middle-section">
+                    <!-- Recent Transactions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Recent Transaction</span>
+                            <span class="view-all">View All <i class="fas fa-chevron-right"></i></span>
+                        </div>
+                        
+                        <div class="transaction-tabs">
+                            <div class="tab active">All</div>
+                            <div class="tab">Revenue</div>
+                            <div class="tab">Expenses</div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-car" style="color: #a0aec0;"></i>
+                            </div>
+                            <div class="transaction-info">
+                                <div class="transaction-name">GTR 5</div>
+                                <div class="transaction-category">Gadget & Gear</div>
+                            </div>
+                            <div class="transaction-right">
+                                <div class="transaction-amount">$160.00</div>
+                                <div class="transaction-date">17 May 2023</div>
+                            </div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-tshirt" style="color: #a0aec0;"></i>
+                            </div>
+                            <div class="transaction-info">
+                                <div class="transaction-name">Polo Shirt</div>
+                                <div class="transaction-category">XL Fashions</div>
+                            </div>
+                            <div class="transaction-right">
+                                <div class="transaction-amount">$20.00</div>
+                                <div class="transaction-date">18 May 2023</div>
+                            </div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-home" style="color: #a0aec0;"></i>
+                            </div>
+                            <div class="transaction-info">
+                                <div class="transaction-name">Biriyani</div>
+                                <div class="transaction-category">Kacchi Biriyani</div>
+                            </div>
+                            <div class="transaction-right">
+                                <div class="transaction-amount">$10.00</div>
+                                <div class="transaction-date">17 May 2023</div>
+                            </div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-taxi" style="color: #a0aec0;"></i>
+                            </div>
+                            <div class="transaction-info">
+                                <div class="transaction-name">Taxi Fare</div>
+                                <div class="transaction-category">Uber</div>
+                            </div>
+                            <div class="transaction-right">
+                                <div class="transaction-amount">$12.00</div>
+                                <div class="transaction-date">17 May 2023</div>
+                            </div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-keyboard" style="color: #a0aec0;"></i>
+                            </div>
+                            <div class="transaction-info">
+                                <div class="transaction-name">Keyboard</div>
+                                <div class="transaction-category">Gadget & Gear</div>
+                            </div>
+                            <div class="transaction-right">
+                                <div class="transaction-amount">$22.00</div>
+                                <div class="transaction-date">17 May 2023</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="card">
+                        <div class="chart-header">
+                            <span class="card-title">Statistics</span>
+                            <select class="dropdown">
+                                <option>Weekly Comparison</option>
+                                <option>Monthly Comparison</option>
+                                <option>Yearly Comparison</option>
+                            </select>
+                        </div>
+
+                        <div class="chart">
+                            <div class="bar-group">
+                                <div class="bars">
+                                    <div class="bar this-week" style="height: 140px;"></div>
+                                    <div class="bar last-week" style="height: 120px;"></div>
+                                </div>
+                                <div class="chart-label">17 Sun</div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bars">
+                                    <div class="bar this-week" style="height: 100px;"></div>
+                                    <div class="bar last-week" style="height: 90px;"></div>
+                                </div>
+                                <div class="chart-label">18 Mon</div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bars">
+                                    <div class="bar this-week" style="height: 80px;"></div>
+                                    <div class="bar last-week" style="height: 70px;"></div>
+                                </div>
+                                <div class="chart-label">19 Tue</div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bars">
+                                    <div class="bar this-week" style="height: 130px;"></div>
+                                    <div class="bar last-week" style="height: 110px;"></div>
+                                </div>
+                                <div class="chart-label">20 Wed</div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bars">
+                                    <div class="bar this-week" style="height: 125px;"></div>
+                                    <div class="bar last-week" style="height: 105px;"></div>
+                                </div>
+                                <div class="chart-label">21 Thu</div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bars">
+                                    <div class="bar this-week" style="height: 145px;"></div>
+                                    <div class="bar last-week" style="height: 125px;"></div>
+                                </div>
+                                <div class="chart-label">22 Fri</div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bars">
+                                    <div class="bar this-week" style="height: 135px;"></div>
+                                    <div class="bar last-week" style="height: 115px;"></div>
+                                </div>
+                                <div class="chart-label">23 Sat</div>
+                            </div>
+                        </div>
+
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #2dd4bf;"></div>
+                                <span>This week</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #14b8a6;"></div>
+                                <span>Last week</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section - Expenses Breakdown -->
+                <div class="bottom-section">
+                    <div class="card-header">
+                        <span class="card-title">Expenses Breakdown</span>
+                        <span style="color: #a0aec0; font-size: 13px;">*Compare to last month</span>
+                    </div>
+
+                    <div class="expenses-grid">
+                        <div class="expense-card">
+                            <div class="expense-header">
+                                <div class="expense-icon">
+                                    <i class="fas fa-home" style="color: #a0aec0;"></i>
+                                </div>
+                                <div class="expense-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="expense-category">Housing</div>
+                            <div class="expense-amount">$250.00</div>
+                            <div class="expense-change decrease">
+                                <span>15%</span>
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="expense-card">
+                            <div class="expense-header">
+                                <div class="expense-icon">
+                                    <i class="fas fa-utensils" style="color: #a0aec0;"></i>
+                                </div>
+                                <div class="expense-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="expense-category">Food</div>
+                            <div class="expense-amount">$350.00</div>
+                            <div class="expense-change decrease">
+                                <span>08%</span>
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="expense-card">
+                            <div class="expense-header">
+                                <div class="expense-icon">
+                                    <i class="fas fa-car" style="color: #a0aec0;"></i>
+                                </div>
+                                <div class="expense-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="expense-category">Transportation</div>
+                            <div class="expense-amount">$50.00</div>
+                            <div class="expense-change decrease">
+                                <span>12%</span>
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="expense-card">
+                            <div class="expense-header">
+                                <div class="expense-icon">
+                                    <i class="fas fa-film" style="color: #a0aec0;"></i>
+                                </div>
+                                <div class="expense-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="expense-category">Entertainment</div>
+                            <div class="expense-amount">$80.00</div>
+                            <div class="expense-change decrease">
+                                <span>15%</span>
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="expense-card">
+                            <div class="expense-header">
+                                <div class="expense-icon">
+                                    <i class="fas fa-shopping-cart" style="color: #a0aec0;"></i>
+                                </div>
+                                <div class="expense-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="expense-category">Shopping</div>
+                            <div class="expense-amount">$420.00</div>
+                            <div class="expense-change increase">
+                                <span>25%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+
+                        <div class="expense-card">
+                            <div class="expense-header">
+                                <div class="expense-icon">
+                                    <i class="fas fa-ellipsis-h" style="color: #a0aec0;"></i>
+                                </div>
+                                <div class="expense-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="expense-category">Others</div>
+                            <div class="expense-amount">$650.00</div>
+                            <div class="expense-change increase">
+                                <span>23%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+</body>
+</html>
