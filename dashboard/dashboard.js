@@ -1,7 +1,7 @@
 
 
-const app = angular.module('bugetifyApp', [])
-// angular.module('bugetifyApp', [])
+const app = angular.module('BudgetifyApp', [])
+// angular.module('BudgetifyApp', [])
 
 
 const API_BASE_URL = 'http://127.0.0.1:8000/transaction';
@@ -26,8 +26,13 @@ app.controller('MainController', function($scope) {
         localStorage.removeItem('refresh')
         localStorage.removeItem('customer')
 
-        // showAlert('Logged Successfully', 'success')
-        window.location.href = '../index.html'
+        showAlert('Logged Successfully', 'success')
+        // window.location.href = '/frontend_laxmi/profile/profile.html'
+    }
+
+    $scope.show_profile = function() {
+
+        window.location.href = '/frontend_laxmi/profile/profile.html'
     }
 
 });
